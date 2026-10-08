@@ -1,0 +1,22 @@
+# Artefactos y ejecuciones locales
+target/
+uploads/
+*.log
+
+# Wrapper de Maven (la imagen trae mvn)
+.mvn/
+mvnw
+mvnw.cmd
+
+# Archivos de entorno / IDE
+.git/
+.gitignore
+.vscode/
+.idea/
+
+# Documentación y scripts no necesarios en la imagen
+HELP.md
+README.md
+db/
+Dockerfile
+.dockerignore

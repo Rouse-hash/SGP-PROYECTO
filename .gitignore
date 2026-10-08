@@ -1,0 +1,29 @@
+# ===== Monorepo SGP =========================================
+
+# Dependencias y artefactos de build
+node_modules/
+dist/
+dist-ssr/
+target/
+build/
+
+# Variables de entorno (nunca versionar secretos)
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+logs/
+
+# Archivos subidos por usuarios (datos personales)
+uploads/
+
+# Editores / sistema
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Maven wrapper jar (se descarga con mvnw)
+.mvn/wrapper/maven-wrapper.jar
