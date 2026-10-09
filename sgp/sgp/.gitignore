@@ -35,6 +35,9 @@ build/
 ### Archivos subidos por los usuarios ###
 /uploads/
 
+### Configuracion local (secretos de desarrollo, no versionar) ###
+src/main/resources/application-local.properties
+
 ### Logs de la aplicación ###
 *.log
 /logs/

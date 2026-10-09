@@ -1,0 +1,13 @@
+# ============================================
+# Perfil de desarrollo LOCAL (plantilla)
+# ============================================
+# Copia este archivo como application-local.properties y ajusta tus valores.
+# Se carga por defecto gracias a spring.profiles.default=local.
+# En la nube este archivo NO existe; alli manda las variables de entorno.
+
+spring.datasource.url=jdbc:mysql://localhost:3306/sgp
+spring.datasource.username=root
+spring.datasource.password=CAMBIAR_PASSWORD_LOCAL_Y_NO_VERSIONAR
+
+# Debe tener al menos 32 caracteres
+jwt.secret=CAMBIAR_POR_UNA_CLAVE_DE_AL_MENOS_32_CARACTERES
