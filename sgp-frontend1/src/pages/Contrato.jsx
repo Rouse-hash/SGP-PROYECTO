@@ -105,7 +105,7 @@ function Contrato() {
   // Muestra la información del contrato sin permitir modificarla
   const verContrato = (contratoSeleccionado) => {
     setContrato({
-      idEmpleado: contratoSeleccionado.empleado.idEmpleado,
+      idEmpleado: contratoSeleccionado.empleado?.idEmpleado || "",
       tipoContrato: contratoSeleccionado.tipoContrato,
       fechaInicio: contratoSeleccionado.fechaInicio,
       fechaFin: contratoSeleccionado.fechaFin,
@@ -120,7 +120,7 @@ function Contrato() {
   // Carga un contrato seleccionado en el formulario y permite editarlo
   const editarContrato = (contratoSeleccionado) => {
     setContrato({
-      idEmpleado: contratoSeleccionado.empleado.idEmpleado,
+      idEmpleado: contratoSeleccionado.empleado?.idEmpleado || "",
       tipoContrato: contratoSeleccionado.tipoContrato,
       fechaInicio: contratoSeleccionado.fechaInicio,
       fechaFin: contratoSeleccionado.fechaFin,
@@ -138,7 +138,14 @@ function Contrato() {
 
     try {
       if (modoEdicion) {
-        await actualizarContrato(idEditando, contrato);
+        const payload = {
+          tipoContrato: contrato.tipoContrato,
+          fechaInicio: contrato.fechaInicio,
+          fechaFin: contrato.fechaFin,
+          salario: contrato.salario,
+          empleado: { idEmpleado: contrato.idEmpleado }
+        };
+        await actualizarContrato(idEditando, payload);
         console.log("Contrato actualizado correctamente");
       } else {
         await crearContrato(contrato.idEmpleado, contrato);

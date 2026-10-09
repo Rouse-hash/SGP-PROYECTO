@@ -2,9 +2,9 @@ package com.sgp.sgp.security;
 
 import com.sgp.sgp.model.Usuario;
 import com.sgp.sgp.repository.UsuarioRepository;
+import com.sgp.sgp.util.JwtUtil;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.security.Keys;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -18,7 +18,6 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.crypto.SecretKey;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 @Component
@@ -29,7 +28,7 @@ public class JwtFilter extends OncePerRequestFilter {
 
     public JwtFilter(@Value("${jwt.secret}") String secret,
                      UsuarioRepository usuarioRepository) {
-        this.key = Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
+        this.key = JwtUtil.construirClave(secret);
         this.usuarioRepository = usuarioRepository;
     }
 

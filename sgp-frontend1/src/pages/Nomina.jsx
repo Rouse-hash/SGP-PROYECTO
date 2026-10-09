@@ -109,8 +109,8 @@ function Nomina() {
     }
 
     if (name === 'departamento') {
-      setFormData(nuevosDatos)
       const dept = departamentos.find(d => d.nombre === value)
+      setFormData({ ...nuevosDatos, municipio: '' })
       if (dept) cargarMunicipios(dept.id)
     } else {
       setFormData(nuevosDatos)
@@ -191,7 +191,8 @@ function Nomina() {
     setIdEditando(nomina.idNomina)
     setModoEdicion(true)
     if (nomina.departamento) {
-      cargarMunicipios(nomina.departamento)
+      const dept = departamentos.find(d => d.nombre === nomina.departamento)
+      if (dept) cargarMunicipios(dept.id)
     }
   }
 
@@ -270,7 +271,7 @@ function Nomina() {
               <option value="">Seleccione un contrato</option>
               {contratos.map((c) => (
                 <option key={c.idContrato} value={c.idContrato}>
-                  Contrato #{c.idContrato} - {c.tipo}
+                  Contrato #{c.idContrato} - {c.tipoContrato}
                 </option>
               ))}
             </select>
